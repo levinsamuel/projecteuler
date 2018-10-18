@@ -17,8 +17,8 @@ log.setLevel(logging.INFO)
 
 
 def findSomePrimes(limit = 0, number = 0):
-    "Method that returns a map where each key is a prime number. The value of the map will be \
-    initialized to 0. This is for counting prime factors of some other number."
+    '''Method that returns a map where each key is a prime number. The value of the map will be 
+initialized to 0. This is for counting prime factors of some other number.'''
     
     someprimes={2:0}
     if limit > 0:
@@ -47,7 +47,7 @@ def _addIfPrime(i, someprimes):
 def factor(num):
     
     "Return the prime factorization of a number in the form of a map between the prime key and \
-    the number of those primes in the prime factorization"
+the number of those primes in the prime factorization"
     root=math.ceil(math.sqrt(num)) + 1
     factors={}
     numagain=num
