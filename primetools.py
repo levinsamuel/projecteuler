@@ -24,6 +24,8 @@ initialized to 0. This is for counting prime factors of some other number.'''
     someprimes={2:0}
     if limit > 0:
         for i in range(3, limit+1, 2):
+            if i % 10000 == 1:
+                log.debug("On number: %d", i-1)
             _addIfPrime(i, someprimes)
     elif number > 0:
         i=3
@@ -37,9 +39,12 @@ initialized to 0. This is for counting prime factors of some other number.'''
     
 def _addIfPrime(i, someprimes):
     prime=True
+    sqroot=math.sqrt(i);
     for p in someprimes:
         if i % p == 0:
             prime=False
+            break
+        elif p > sqroot:
             break
     if prime:
         someprimes[i]=0
