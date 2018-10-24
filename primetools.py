@@ -72,10 +72,25 @@ the number of those primes in the prime factorization"
     return factors;
 
 
+def getFactors(num):
+    
+    """Return the divisors of a given number."""
+    mx=math.ceil(num/2) + 1
+    factors=[1,num]
+    numagain=num
+    for i in range(2, mx):
+        n=numagain/i
+        if n.is_integer():
+            factors.append(i)
+    
+    return factors;
+
 def smallestCommonMultiple(num):
-    "Find the smallest number that is divisible by every number from one to num. It does this by \
-    finding all the prime factorizations     of each number and making sure the final map has \
-    exactly as many of each prime factor as the greatest number of any number up to num."
+    """Find the smallest number that is divisible by every number from one to 
+num. It does this by finding all the prime factorizations of each number 
+and making sure the final map has exactly as many of each prime factor as 
+the greatest number of any number up to num."""
+    
     primes = findSomePrimes(num)
     log.debug("primes: {}".format(primes))
     
