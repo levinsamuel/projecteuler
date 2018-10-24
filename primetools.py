@@ -21,6 +21,7 @@ def findSomePrimes(limit = 0, number = 0):
     '''Method that returns a map where each key is a prime number. The value of the map will be 
 initialized to 0. This is for counting prime factors of some other number.'''
     
+    limit=int(limit)
     someprimes={2:0}
     if limit > 0:
         for i in range(3, limit+1, 2):
@@ -50,14 +51,20 @@ def _addIfPrime(i, someprimes):
         someprimes[i]=0
 
 
-def factor(num):
+def factor(num, primes=None):
     
-    "Return the prime factorization of a number in the form of a map between the prime key and \
-the number of those primes in the prime factorization"
+    """Return the prime factorization of a number in the form of a map between 
+the prime key and the number of those primes in the prime factorization
+
+This runs much faster if a list of primes is provided."""
+
     root=math.ceil(math.sqrt(num)) + 1
     factors={}
     numagain=num
-    for i in range(2, root):
+    looper=primes if primes is not None else range(2, root)
+    for i in looper:
+        if i > root:
+            break
         n=numagain/i
         instances=0
         while n.is_integer():
@@ -66,15 +73,14 @@ the number of those primes in the prime factorization"
             n=numagain/i
         if instances > 0:
             factors[i]=instances
-    
     if numagain > 1:
         factors[int(numagain)]=1
     return factors;
 
 
-def getFactors(num):
+def getDivisors(num):
     
-    """Return the divisors of a given number."""
+    """Return the divisors of a given number. This is quite slow."""
     mx=math.ceil(num/2) + 1
     factors=[1,num]
     numagain=num
