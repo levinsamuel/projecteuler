@@ -21,6 +21,18 @@ def findSomePrimes(limit = 0, number = 0):
     '''Method that returns a map where each key is a prime number. The value of the map will be 
 initialized to 0. This is for counting prime factors of some other number.'''
     
+    def _addIfPrime(i, someprimes):
+        prime=True
+        sqroot=math.sqrt(i);
+        for p in someprimes:
+            if i % p == 0:
+                prime=False
+                break
+            elif p > sqroot:
+                break
+        if prime:
+            someprimes[i]=0
+    
     limit=int(limit)
     someprimes={2:0}
     if limit > 0:
@@ -37,18 +49,6 @@ initialized to 0. This is for counting prime factors of some other number.'''
         raise Exception("Either limit or number parameter must be specified and greater than 0.")
 
     return someprimes
-    
-def _addIfPrime(i, someprimes):
-    prime=True
-    sqroot=math.sqrt(i);
-    for p in someprimes:
-        if i % p == 0:
-            prime=False
-            break
-        elif p > sqroot:
-            break
-    if prime:
-        someprimes[i]=0
 
 
 def factor(num, primes=None):
