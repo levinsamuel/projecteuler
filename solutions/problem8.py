@@ -34,7 +34,7 @@
 # In[34]:
 
 
-import primetools as pt
+import tools.primetools as pt
 import numbers
 from functools import reduce
 

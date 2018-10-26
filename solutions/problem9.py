@@ -17,7 +17,7 @@
 # In[54]:
 
 
-import primetools as pt
+import tools.primetools as pt
 import numbers, math
 import tools.misc as misc
 import logging, sys

@@ -12,7 +12,7 @@
 # In[1]:
 
 
-import primetools as pt
+import tools.primetools as pt
 
 
 # In[2]:
