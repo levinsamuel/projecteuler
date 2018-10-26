@@ -1,5 +1,5 @@
 import unittest, time
-import primetools as pt
+import tools.primetools as pt
 
 class TestPrimeTools(unittest.TestCase):
 
