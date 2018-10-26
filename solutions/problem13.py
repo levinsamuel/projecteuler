@@ -29,7 +29,7 @@ log.setLevel(logging.INFO)
 # In[10]:
 
 
-with open('problem13_number.txt', 'r') as f:
+with open('data/problem13_number.txt', 'r') as f:
     num=f.read();
     
 nums=num.split()
