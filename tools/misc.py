@@ -40,3 +40,27 @@ def highestConsecutiveProduct(numlist, conseclength = 4):
                 largestss=getsubseq(i)
         
     return [mx, mxidx, largestss]
+    
+def find_sequence_lengths(upto):
+    '''Find all the lengths of all the sequences starting with each number
+from 1 to "upto" parameter. Returns a map from the number to the length of its
+sequence'''
+    lengths={1:1}
+    for start in range(1, upto):
+        li, i = [], start
+        while True:
+            try:
+                # If no key error thrown, map contains i, break loop
+                lengths[i]
+                break
+            except KeyError:
+                # map does not contain key, add to list and find next i
+                li.append(i)
+                i = int(i/2) if i % 2 == 0 else 3*i + 1
+        # If there are items in the list, i.e. items not known, add
+        # them to the map, increasing from the first found existing length
+        if len(li) > 0:
+            li.reverse()
+            lengths.update({li[x]:x+1+lengths[i] for x in range(len(li))})
+        
+    return lengths
